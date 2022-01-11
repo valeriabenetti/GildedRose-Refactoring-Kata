@@ -33,7 +33,7 @@ class GildedRose
   end
 
   def decrease_sell_in_value_when_not_sulfuras(item)
-    item_is_not_sulfuras = item.name != "Sulfuras, Hand of Ragnaros"
+    item_is_not_sulfuras = is_item_not_sulfuras(item)
     if item_is_not_sulfuras
       item.sell_in = item.sell_in - 1
     end
@@ -63,6 +63,12 @@ class GildedRose
         end
       end
     end
+  end
+
+  private
+
+  def is_item_not_sulfuras(item)
+    item.name != "Sulfuras, Hand of Ragnaros"
   end
 end
 
