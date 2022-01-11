@@ -33,8 +33,7 @@ class GildedRose
   end
 
   def decrease_sell_in_value_when_not_sulfuras(item)
-    item_is_not_sulfuras = is_item_not_sulfuras(item)
-    if item_is_not_sulfuras
+    if is_item_not_sulfuras(item)
       item.sell_in = item.sell_in - 1
     end
   end
