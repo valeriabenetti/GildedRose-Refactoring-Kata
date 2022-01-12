@@ -49,13 +49,17 @@ class GildedRose
   def blueberry(item)
     if item.quality < 50
       item.quality = item.quality + 1
-      if item.name == "Backstage passes to a TAFKAL80ETC concert"
-        if item.sell_in < 11
-          orange(item)
-        end
-        if item.sell_in < 6
-          orange(item)
-        end
+      pineapple(item)
+    end
+  end
+
+  def pineapple(item)
+    if item.name == "Backstage passes to a TAFKAL80ETC concert"
+      if item.sell_in < 11
+        orange(item)
+      end
+      if item.sell_in < 6
+        orange(item)
       end
     end
   end
