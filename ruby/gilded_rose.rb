@@ -14,15 +14,7 @@ class GildedRose
 
   def cherry(item)
     if item.sell_in < 0
-      if item.name != "Aged Brie"
-        if item.name != "Backstage passes to a TAFKAL80ETC concert"
-          grape(item)
-        else
-          item.quality = item.quality - item.quality
-        end
-      else
-        orange(item)
-      end
+      kiwi(item)
     end
   end
 
@@ -36,21 +28,37 @@ class GildedRose
     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
       grape(item)
     else
-      if item.quality < 50
-        item.quality = item.quality + 1
-        if item.name == "Backstage passes to a TAFKAL80ETC concert"
-          if item.sell_in < 11
-            orange(item)
-          end
-          if item.sell_in < 6
-            orange(item)
-          end
-        end
-      end
+      blueberry(item)
     end
   end
 
   private
+
+  def kiwi(item)
+    if item.name != "Aged Brie"
+      if item.name != "Backstage passes to a TAFKAL80ETC concert"
+        grape(item)
+      else
+        item.quality = item.quality - item.quality
+      end
+    else
+      orange(item)
+    end
+  end
+
+  def blueberry(item)
+    if item.quality < 50
+      item.quality = item.quality + 1
+      if item.name == "Backstage passes to a TAFKAL80ETC concert"
+        if item.sell_in < 11
+          orange(item)
+        end
+        if item.sell_in < 6
+          orange(item)
+        end
+      end
+    end
+  end
 
   def orange(item)
     if item.quality < 50
