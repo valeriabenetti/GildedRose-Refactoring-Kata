@@ -16,11 +16,7 @@ class GildedRose
     if item.sell_in < 0
       if item.name != "Aged Brie"
         if item.name != "Backstage passes to a TAFKAL80ETC concert"
-          if item.quality > 0
-            if item.name != "Sulfuras, Hand of Ragnaros"
-              item.quality = item.quality - 1
-            end
-          end
+          grape(item)
         else
           item.quality = item.quality - item.quality
         end
@@ -40,11 +36,7 @@ class GildedRose
 
   def apple(item)
     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
-      if item.quality > 0
-        if item.name != "Sulfuras, Hand of Ragnaros"
-          item.quality = item.quality - 1
-        end
-      end
+      grape(item)
     else
       if item.quality < 50
         item.quality = item.quality + 1
@@ -65,6 +57,14 @@ class GildedRose
   end
 
   private
+
+  def grape(item)
+    if item.quality > 0
+      if item.name != "Sulfuras, Hand of Ragnaros"
+        item.quality = item.quality - 1
+      end
+    end
+  end
 
   def is_item_not_sulfuras(item)
     item.name != "Sulfuras, Hand of Ragnaros"

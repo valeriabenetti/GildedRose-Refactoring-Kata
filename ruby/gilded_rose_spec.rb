@@ -134,7 +134,7 @@ describe GildedRose do
         #act
         GildedRose.new(items).update_quality()
 
-        #assert
+        #assert-
         expect(items[0].quality).to eq expected_quality
       end
 
