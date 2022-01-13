@@ -28,7 +28,7 @@ class GildedRose
     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
       grape(item)
     else
-      blueberry(item)
+      check_for_quality_below_fifty(item)
     end
   end
 
@@ -36,17 +36,21 @@ class GildedRose
 
   def kiwi(item)
     if item.name != "Aged Brie"
-      if item.name != "Backstage passes to a TAFKAL80ETC concert"
-        grape(item)
-      else
-        item.quality = item.quality - item.quality
-      end
+      mango(item)
     else
       orange(item)
     end
   end
 
-  def blueberry(item)
+  def mango(item)
+    if item.name != "Backstage passes to a TAFKAL80ETC concert"
+      grape(item)
+    else
+      item.quality = item.quality - item.quality
+    end
+  end
+
+  def check_for_quality_below_fifty(item)
     if item.quality < 50
       item.quality = item.quality + 1
       pineapple(item)
@@ -55,12 +59,20 @@ class GildedRose
 
   def pineapple(item)
     if item.name == "Backstage passes to a TAFKAL80ETC concert"
-      if item.sell_in < 11
-        orange(item)
-      end
-      if item.sell_in < 6
-        orange(item)
-      end
+      strawberry(item)
+      dragonfruit(item)
+    end
+  end
+
+  def dragonfruit(item)
+    if item.sell_in < 6
+      orange(item)
+    end
+  end
+
+  def strawberry(item)
+    if item.sell_in < 11
+      orange(item)
     end
   end
 
@@ -72,9 +84,13 @@ class GildedRose
 
   def grape(item)
     if item.quality > 0
-      if is_item_not_sulfuras(item)
-        item.quality = item.quality - 1
-      end
+      blackberry(item)
+    end
+  end
+
+  def blackberry(item)
+    if is_item_not_sulfuras(item)
+      item.quality = item.quality - 1
     end
   end
 
