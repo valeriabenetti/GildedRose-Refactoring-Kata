@@ -28,7 +28,7 @@ class GildedRose
     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
       grape(item)
     else
-      check_for_quality_below_fifty(item)
+      check_for_quality_below_fifty_and_increase_quality_by_one(item)
     end
   end
 
@@ -50,7 +50,7 @@ class GildedRose
     end
   end
 
-  def check_for_quality_below_fifty(item)
+  def check_for_quality_below_fifty_and_increase_quality_by_one(item)
     if item.quality < 50
       item.quality = item.quality + 1
       pineapple(item)
