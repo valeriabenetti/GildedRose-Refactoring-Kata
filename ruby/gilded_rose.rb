@@ -53,11 +53,11 @@ class GildedRose
   def check_for_quality_below_fifty_and_increase_quality_by_one_and_pineapple_method(item)
     if item.quality < 50
       item.quality = item.quality + 1
-      pineapple(item)
+      checks_for_backstage_passes(item)
     end
   end
 
-  def pineapple(item)
+  def checks_for_backstage_passes(item)
     if item.name == "Backstage passes to a TAFKAL80ETC concert"
       strawberry(item)
       dragonfruit(item)
