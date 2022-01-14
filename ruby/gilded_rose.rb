@@ -38,7 +38,7 @@ class GildedRose
     if item.name != "Aged Brie"
       mango(item)
     else
-      checks_if_item_quality_is_below_50(item)
+      increase_quality_when_quality_is_below_fifty(item)
     end
   end
 
@@ -52,34 +52,38 @@ class GildedRose
 
   def check_for_quality_below_fifty_and_increase_quality_by_one_and_pineapple_method(item)
     if item.quality < 50
-      item.quality = item.quality + 1
+      increase_quality_by_one(item)
       checks_for_backstage_passes_and_strawberry_and_dragonfruit(item)
     end
   end
 
   def checks_for_backstage_passes_and_strawberry_and_dragonfruit(item)
     if item.name == "Backstage passes to a TAFKAL80ETC concert"
-      checks_if_sell_in_is_below_11(item)
-      dragonfruit(item)
+      increase_quality_when_sell_in_below_eleven_and_quality_below_fifty(item)
+      increase_quality_when_sell_in_is_below_six_and_quality_below_fifty(item)
     end
   end
 
-  def dragonfruit(item)
+  def increase_quality_when_sell_in_is_below_six_and_quality_below_fifty(item)
     if item.sell_in < 6
-      checks_if_item_quality_is_below_50(item)
+      increase_quality_when_quality_is_below_fifty(item)
     end
   end
 
-  def checks_if_sell_in_is_below_11(item)
+  def increase_quality_when_sell_in_below_eleven_and_quality_below_fifty(item)
     if item.sell_in < 11
-      checks_if_item_quality_is_below_50(item)
+      increase_quality_when_quality_is_below_fifty(item)
     end
   end
 
-  def checks_if_item_quality_is_below_50(item)
+  def increase_quality_when_quality_is_below_fifty(item)
     if item.quality < 50
-      item.quality = item.quality + 1
+      increase_quality_by_one(item)
     end
+  end
+
+  def increase_quality_by_one(item)
+    item.quality = item.quality + 1
   end
 
   def grape(item)
