@@ -59,7 +59,7 @@ class GildedRose
 
   def checks_for_backstage_passes_and_strawberry_and_dragonfruit(item)
     if item.name == "Backstage passes to a TAFKAL80ETC concert"
-      strawberry(item)
+      checks_if_sell_in_is_below_11(item)
       dragonfruit(item)
     end
   end
@@ -70,7 +70,7 @@ class GildedRose
     end
   end
 
-  def strawberry(item)
+  def checks_if_sell_in_is_below_11(item)
     if item.sell_in < 11
       orange(item)
     end
