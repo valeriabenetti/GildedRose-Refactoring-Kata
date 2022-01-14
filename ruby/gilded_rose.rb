@@ -38,7 +38,7 @@ class GildedRose
     if item.name != "Aged Brie"
       mango(item)
     else
-      orange(item)
+      checks_if_item_quality_is_below_50(item)
     end
   end
 
@@ -66,17 +66,17 @@ class GildedRose
 
   def dragonfruit(item)
     if item.sell_in < 6
-      orange(item)
+      checks_if_item_quality_is_below_50(item)
     end
   end
 
   def checks_if_sell_in_is_below_11(item)
     if item.sell_in < 11
-      orange(item)
+      checks_if_item_quality_is_below_50(item)
     end
   end
 
-  def orange(item)
+  def checks_if_item_quality_is_below_50(item)
     if item.quality < 50
       item.quality = item.quality + 1
     end
@@ -106,6 +106,7 @@ class Item
     @name = name
     @sell_in = sell_in
     @quality = quality
+
   end
 
   def to_s()
