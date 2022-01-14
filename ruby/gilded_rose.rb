@@ -53,11 +53,11 @@ class GildedRose
   def check_for_quality_below_fifty_and_increase_quality_by_one_and_pineapple_method(item)
     if item.quality < 50
       increase_quality_by_one(item)
-      checks_for_backstage_passes_and_strawberry_and_dragonfruit(item)
+      increase_quality_for_backstage_passes_when_appropriate(item)
     end
   end
 
-  def checks_for_backstage_passes_and_strawberry_and_dragonfruit(item)
+  def increase_quality_for_backstage_passes_when_appropriate(item)
     if item.name == "Backstage passes to a TAFKAL80ETC concert"
       increase_quality_when_sell_in_below_eleven_and_quality_below_fifty(item)
       increase_quality_when_sell_in_is_below_six_and_quality_below_fifty(item)
