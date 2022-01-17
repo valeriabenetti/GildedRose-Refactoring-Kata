@@ -13,7 +13,7 @@ class GildedRose
   end
 
   def cherry(item)
-    if item.sell_in < 0
+    if sell_in_date_has_passed(item)
       check_that_item_isnt_aged_brie_and_change_quality_appropriately(item)
     end
   end
@@ -33,6 +33,10 @@ class GildedRose
   end
 
   private
+
+  def sell_in_date_has_passed(item)
+    item.sell_in < 0
+  end
 
   def check_that_item_isnt_aged_brie_and_change_quality_appropriately(item)
     if item.name != "Aged Brie"
