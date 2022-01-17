@@ -14,7 +14,7 @@ class GildedRose
 
   def cherry(item)
     if item.sell_in < 0
-      kiwi(item)
+      check_for_aged_brie_and_change_quality_appropriately(item)
     end
   end
 
@@ -34,15 +34,15 @@ class GildedRose
 
   private
 
-  def kiwi(item)
+  def check_for_aged_brie_and_change_quality_appropriately(item)
     if item.name != "Aged Brie"
-      checks_for_backstage_passes_and_decrements_appropriatally(item)
+      checks_for_backstage_passes_and_decrements_appropriately(item)
     else
       increase_quality_when_quality_is_below_fifty(item)
     end
   end
 
-  def checks_for_backstage_passes_and_decrements_appropriatally(item)
+  def checks_for_backstage_passes_and_decrements_appropriately(item)
     if item.name != "Backstage passes to a TAFKAL80ETC concert"
       decrease_quality_when_appropriate(item)
     else
