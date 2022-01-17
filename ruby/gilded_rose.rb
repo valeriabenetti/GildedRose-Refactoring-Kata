@@ -88,11 +88,11 @@ class GildedRose
 
   def grape(item)
     if item.quality > 0
-      blackberry(item)
+      decrease_quality_when_not_sulfuras(item)
     end
   end
 
-  def blackberry(item)
+  def decrease_quality_when_not_sulfuras(item)
     if is_item_not_sulfuras(item)
       item.quality = item.quality - 1
     end
