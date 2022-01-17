@@ -8,11 +8,11 @@ class GildedRose
     @items.each do |item|
       checks_that_item_isnt_aged_brie_or_backstage_pass_and_change_quality(item)
       decrease_sell_in_value_when_not_sulfuras(item)
-      cherry(item)
+      change_quality_when_passed_sell_in_date(item)
     end
   end
 
-  def cherry(item)
+  def change_quality_when_passed_sell_in_date(item)
     if sell_in_date_has_passed(item)
       increase_quality_of_aged_brie_or_decrease_for_other_item(item)
     end
