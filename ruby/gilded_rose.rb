@@ -14,7 +14,7 @@ class GildedRose
 
   def cherry(item)
     if sell_in_date_has_passed(item)
-      check_that_item_isnt_aged_brie_and_change_quality_appropriately(item)
+      increase_quality_of_aged_brie_or_decrease_for_other_item(item)
     end
   end
 
@@ -38,7 +38,7 @@ class GildedRose
     item.sell_in < 0
   end
 
-  def check_that_item_isnt_aged_brie_and_change_quality_appropriately(item)
+  def increase_quality_of_aged_brie_or_decrease_for_other_item(item)
     if item.name != "Aged Brie"
       checks_that_item_isnt_backstage_passes_and_decrements_appropriately(item)
     else
