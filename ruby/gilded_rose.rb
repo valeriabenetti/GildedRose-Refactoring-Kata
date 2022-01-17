@@ -36,13 +36,13 @@ class GildedRose
 
   def kiwi(item)
     if item.name != "Aged Brie"
-      mango(item)
+      checks_for_backstage_passes_and_decrements_appropriatally(item)
     else
       increase_quality_when_quality_is_below_fifty(item)
     end
   end
 
-  def mango(item)
+  def checks_for_backstage_passes_and_decrements_appropriatally(item)
     if item.name != "Backstage passes to a TAFKAL80ETC concert"
       decrease_quality_when_appropriate(item)
     else
