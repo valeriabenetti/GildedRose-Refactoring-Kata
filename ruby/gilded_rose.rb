@@ -26,7 +26,7 @@ class GildedRose
 
   def apple(item)
     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
-      grape(item)
+      decrease_quality_when_appropriate(item)
     else
       increase_quality_when_below_fifty(item)
     end
@@ -44,7 +44,7 @@ class GildedRose
 
   def mango(item)
     if item.name != "Backstage passes to a TAFKAL80ETC concert"
-      grape(item)
+      decrease_quality_when_appropriate(item)
     else
       item.quality = item.quality - item.quality
     end
@@ -86,7 +86,7 @@ class GildedRose
     item.quality = item.quality + 1
   end
 
-  def grape(item)
+  def decrease_quality_when_appropriate(item)
     if item.quality > 0
       decrease_quality_when_not_sulfuras(item)
     end
