@@ -1,4 +1,5 @@
 class GildedRose
+  MAX_QUALITY = 50
 
   def initialize(items)
     @items = items
@@ -28,7 +29,7 @@ class GildedRose
     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
       decrease_quality_when_appropriate(item)
     else
-      increase_quality_when_below_maximum(item)
+      increase_quality_when_below_max(item)
     end
   end
 
@@ -42,7 +43,7 @@ class GildedRose
     if item.name != "Aged Brie"
       checks_that_item_isnt_backstage_passes_and_decrements_appropriately(item)
     else
-      increase_quality_when_quality_is_below_fifty(item)
+      increase_quality_when_quality_is_below_max(item)
     end
   end
 
@@ -54,8 +55,8 @@ class GildedRose
     end
   end
 
-  def increase_quality_when_below_maximum(item)
-    if item.quality < 50
+  def increase_quality_when_below_max(item)
+    if item.quality < MAX_QUALITY
       increase_quality(item)
       increase_quality_for_backstage_passes_when_appropriate(item)
     end
@@ -70,18 +71,18 @@ class GildedRose
 
   def increase_quality_when_sell_in_is_below_six_and_quality_below_fifty(item)
     if item.sell_in < 6
-      increase_quality_when_quality_is_below_fifty(item)
+      increase_quality_when_quality_is_below_max(item)
     end
   end
 
   def increase_quality_when_sell_in_below_eleven_and_quality_below_fifty(item)
     if item.sell_in < 11
-      increase_quality_when_quality_is_below_fifty(item)
+      increase_quality_when_quality_is_below_max(item)
     end
   end
 
-  def increase_quality_when_quality_is_below_fifty(item)
-    if item.quality < 50
+  def increase_quality_when_quality_is_below_max(item)
+    if item.quality < MAX_QUALITY
       increase_quality(item)
     end
   end
