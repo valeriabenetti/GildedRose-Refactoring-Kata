@@ -60,11 +60,11 @@ class GildedRose
   def increase_quality_when_below_max(item)
     if item.quality < MAX_QUALITY
       increase_quality(item)
-      increase_quality_for_backstage_passes_when_appropriate(item)
+      increase_quality_for_backstage_passes_as_concert_date_approaches(item)
     end
   end
 
-  def increase_quality_for_backstage_passes_when_appropriate(item)
+  def increase_quality_for_backstage_passes_as_concert_date_approaches(item)
     if item.name == "Backstage passes to a TAFKAL80ETC concert"
       increase_quality_when_concert_is_close_and_below_max_quality(item)
       increase_quality_when_concert_is_near_and_below_max_quality(item)
