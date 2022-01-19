@@ -2,6 +2,8 @@ class GildedRose
   MAX_QUALITY = 50
   CONCERT_IS_CLOSE = 11
   CONCERT_IS_IMMINENT = 6
+  EXPIRED = 0
+  MIN_QUALITY = 0
 
   def initialize(items)
     @items = items
@@ -38,7 +40,7 @@ class GildedRose
   private
 
   def sell_in_date_has_passed(item)
-    item.sell_in < 0
+    item.sell_in < EXPIRED
   end
 
   def increase_quality_of_aged_brie_or_decrease_for_other_item(item)
@@ -96,7 +98,7 @@ class GildedRose
   end
 
   def decrease_quality_when_appropriate(item)
-    if item.quality > 0
+    if item.quality > MIN_QUALITY
       decrease_quality_when_not_sulfuras(item)
     end
   end
