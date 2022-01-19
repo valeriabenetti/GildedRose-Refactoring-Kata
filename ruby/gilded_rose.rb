@@ -64,7 +64,7 @@ class GildedRose
 
   def increase_quality_for_backstage_passes_when_appropriate(item)
     if item.name == "Backstage passes to a TAFKAL80ETC concert"
-      increase_quality_when_sell_in_below_eleven_and_quality_below_fifty(item)
+      increase_quality_when_concert_is_close_and_below_max_quality(item)
       increase_quality_when_sell_in_is_below_six_and_quality_below_fifty(item)
     end
   end
@@ -75,7 +75,7 @@ class GildedRose
     end
   end
 
-  def increase_quality_when_sell_in_below_eleven_and_quality_below_fifty(item)
+  def increase_quality_when_concert_is_close_and_below_max_quality(item)
     if item.sell_in < 11
       increase_quality_when_below_max_quality(item)
     end
