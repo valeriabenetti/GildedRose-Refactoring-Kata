@@ -1,5 +1,7 @@
 class GildedRose
   MAX_QUALITY = 50
+  CONCERT_IS_CLOSE = 11
+  CONCERT_IS_NEAR = 6
 
   def initialize(items)
     @items = items
@@ -69,14 +71,16 @@ class GildedRose
     end
   end
 
+
   def increase_quality_when_sell_in_is_below_six_and_quality_below_fifty(item)
-    if item.sell_in < 6
+    if item.sell_in < CONCERT_IS_NEAR
       increase_quality_when_below_max_quality(item)
     end
   end
 
+
   def increase_quality_when_concert_is_close_and_below_max_quality(item)
-    if item.sell_in < 11
+    if item.sell_in < CONCERT_IS_CLOSE
       increase_quality_when_below_max_quality(item)
     end
   end
