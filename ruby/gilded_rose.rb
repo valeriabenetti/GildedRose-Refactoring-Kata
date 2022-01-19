@@ -43,7 +43,7 @@ class GildedRose
     if item.name != "Aged Brie"
       checks_that_item_isnt_backstage_passes_and_decrements_appropriately(item)
     else
-      increase_quality_when_quality_is_below_max(item)
+      increase_quality_when_below_max_quality(item)
     end
   end
 
@@ -71,17 +71,17 @@ class GildedRose
 
   def increase_quality_when_sell_in_is_below_six_and_quality_below_fifty(item)
     if item.sell_in < 6
-      increase_quality_when_quality_is_below_max(item)
+      increase_quality_when_below_max_quality(item)
     end
   end
 
   def increase_quality_when_sell_in_below_eleven_and_quality_below_fifty(item)
     if item.sell_in < 11
-      increase_quality_when_quality_is_below_max(item)
+      increase_quality_when_below_max_quality(item)
     end
   end
 
-  def increase_quality_when_quality_is_below_max(item)
+  def increase_quality_when_below_max_quality(item)
     if item.quality < MAX_QUALITY
       increase_quality(item)
     end
