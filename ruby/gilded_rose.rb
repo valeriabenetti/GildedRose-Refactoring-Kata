@@ -56,7 +56,7 @@ class GildedRose
 
   def increase_quality_when_below_maximum(item)
     if item.quality < 50
-      increase_quality_by_one(item)
+      increase_quality(item)
       increase_quality_for_backstage_passes_when_appropriate(item)
     end
   end
@@ -82,11 +82,11 @@ class GildedRose
 
   def increase_quality_when_quality_is_below_fifty(item)
     if item.quality < 50
-      increase_quality_by_one(item)
+      increase_quality(item)
     end
   end
 
-  def increase_quality_by_one(item)
+  def increase_quality(item)
     item.quality = item.quality + 1
   end
 
