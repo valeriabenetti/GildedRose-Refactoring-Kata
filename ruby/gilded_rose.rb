@@ -30,11 +30,19 @@ class GildedRose
   end
 
   def checks_that_item_isnt_aged_brie_or_backstage_pass_and_change_quality(item)
-    if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
-      decrease_quality_when_appropriate(item)
+    if is_item_not_aged_brie(item) and item.name != "Backstage passes to a TAFKAL80ETC concert"
+      decrease_quality_when_above_min_quality(item)
     else
       increase_quality_when_below_max(item)
     end
+  end
+
+  def is_item_not_aged_brie(item)
+    item.name != "Aged Brie"
+  end
+
+  def decrease_quality(item)
+    item.quality -= 1
   end
 
   private
@@ -44,16 +52,16 @@ class GildedRose
   end
 
   def increase_quality_of_aged_brie_or_decrease_for_other_item(item)
-    if item.name != "Aged Brie"
-      checks_that_item_isnt_backstage_passes_and_decrements_appropriately(item)
+    if is_item_not_aged_brie(item)
+      checks_that_item_isnt_backstage_passes(item)
     else
       increase_quality_when_below_max_quality(item)
     end
   end
 
-  def checks_that_item_isnt_backstage_passes_and_decrements_appropriately(item)
+  def checks_that_item_isnt_backstage_passes(item)
     if item.name != "Backstage passes to a TAFKAL80ETC concert"
-      decrease_quality_when_appropriate(item)
+      decrease_quality_when_above_min_quality(item)
     else
       item.quality = item.quality - item.quality
     end
@@ -68,20 +76,20 @@ class GildedRose
 
   def increase_quality_for_backstage_passes_as_concert_date_approaches(item)
     if item.name == "Backstage passes to a TAFKAL80ETC concert"
-      increase_quality_when_concert_is_close_and_below_max_quality(item)
-      increase_quality_when_concert_is_imminent_and_below_max_quality(item)
+      increase_quality_when_concert_is_close(item)
+      increase_quality_when_concert_is_imminent(item)
     end
   end
 
 
-  def increase_quality_when_concert_is_imminent_and_below_max_quality(item)
+  def increase_quality_when_concert_is_imminent(item)
     if item.sell_in < CONCERT_IS_IMMINENT
       increase_quality_when_below_max_quality(item)
     end
   end
 
 
-  def increase_quality_when_concert_is_close_and_below_max_quality(item)
+  def increase_quality_when_concert_is_close(item)
     if item.sell_in < CONCERT_IS_CLOSE
       increase_quality_when_below_max_quality(item)
     end
@@ -97,7 +105,7 @@ class GildedRose
     item.quality += 1
   end
 
-  def decrease_quality_when_appropriate(item)
+  def decrease_quality_when_above_min_quality(item)
     if item.quality > MIN_QUALITY
       decrease_quality_when_not_sulfuras(item)
     end
@@ -105,7 +113,7 @@ class GildedRose
 
   def decrease_quality_when_not_sulfuras(item)
     if is_item_not_sulfuras(item)
-      item.quality -= 1
+      decrease_quality(item)
     end
   end
 
