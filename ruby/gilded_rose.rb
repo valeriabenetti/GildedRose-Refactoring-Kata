@@ -94,7 +94,7 @@ class GildedRose
   end
 
   def increase_quality(item)
-    item.quality = item.quality + 1
+    item.quality += 1
   end
 
   def decrease_quality_when_appropriate(item)
@@ -105,7 +105,7 @@ class GildedRose
 
   def decrease_quality_when_not_sulfuras(item)
     if is_item_not_sulfuras(item)
-      item.quality = item.quality - 1
+      item.quality -= 1
     end
   end
 
