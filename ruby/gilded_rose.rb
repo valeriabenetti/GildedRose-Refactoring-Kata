@@ -45,6 +45,10 @@ class GildedRose
     item.quality -= 1
   end
 
+  def is_item_backstage_passes(item)
+    item.name == "Backstage passes to a TAFKAL80ETC concert"
+  end
+
   private
 
   def sell_in_date_has_passed(item)
@@ -60,7 +64,7 @@ class GildedRose
   end
 
   def checks_that_item_isnt_backstage_passes(item)
-    if item.name != "Backstage passes to a TAFKAL80ETC concert"
+    if !is_item_backstage_passes(item)
       decrease_quality_when_above_min_quality(item)
     else
       item.quality = item.quality - item.quality
@@ -75,7 +79,7 @@ class GildedRose
   end
 
   def increase_quality_for_backstage_passes_as_concert_date_approaches(item)
-    if item.name == "Backstage passes to a TAFKAL80ETC concert"
+    if is_item_backstage_passes(item)
       increase_quality_when_concert_is_close(item)
       increase_quality_when_concert_is_imminent(item)
     end
